@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  author: MyString
+  lent: false
+  loan_date: 2020-09-29
+  return_date: 2020-09-29
+
+two:
+  title: MyString
+  author: MyString
+  lent: false
+  loan_date: 2020-09-29
+  return_date: 2020-09-29
