@@ -2,6 +2,21 @@
 
 <h1>Mis libros:</h1>
 
+<div style="display: flex;">
+  <%= form_tag(root_path, method: "get") do %>
+    <%= label_tag :order, "Ordenar por título: " %>
+    <%= select_tag :order, options_for_select(["Ascendentemente", "Descendentemente"]), prompt: "Selecciona..." %>
+    <%= submit_tag "Ordenar" %>
+  <% end %>
+
+  <%= form_tag(root_path, method: "get") do %>
+    <%= label_tag :status, "Mostrar por estado: " %>
+    <%= select_tag :status, options_for_select(["Prestado", "En estante"]), prompt: "Selecciona..." %>
+    <%= submit_tag "Mostrar" %>
+  <% end %>
+</div>
+
+
 <table>
   <thead>
     <tr>

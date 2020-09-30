@@ -4,7 +4,18 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    
+    if params[:order] == "Ascendentemente"
+      @books = Book.all_ordered(:asc)
+    elsif params[:order] == "Descendentemente"
+      @books = Book.all_ordered(:desc)
+    elsif params[:status] == "Prestado"
+      @books = Book.lent
+    elsif params[:status] == "En estante"
+      @books = Book.on_shelf
+    else
+      @books = Book.all
+    end
   end
 
   # GET /books/1
