@@ -10,6 +10,18 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should order index" do
+    get root_path, params: { order: "Ascendente" }
+    assert_template :index  
+    assert_response :success
+  end
+
+  test "should show index by book status" do
+    get root_path, params: { status: "Prestado" }
+    assert_template :index
+    assert_response :success
+  end
+
   test "should get new" do
     get new_book_url
     assert_response :success
