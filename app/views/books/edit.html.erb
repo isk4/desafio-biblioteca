@@ -1,6 +1,46 @@
-<h1>Editing Book</h1>
+<h1>Editando libro</h1>
 
-<%= render 'form', book: @book %>
+<%= form_with(model: @book, local: true) do |form| %>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
 
-<%= link_to 'Show', @book %> |
-<%= link_to 'Back', books_path %>
+      <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title, "Título" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author, "Autor" %>
+    <%= form.text_field :author %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lent, "¿Prestado?" %>
+    <%= form.check_box :lent %>
+  </div>
+
+  <div class="field">
+    <%= form.label :loan_date, "Fecha de préstamo" %>
+    <%= form.date_select :loan_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :return_date, "Fecha de devolución" %>
+    <%= form.date_select :return_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Editar" %>
+  </div>
+<% end %>
+
+<%= link_to 'Atrás', books_path %>
